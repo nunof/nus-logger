@@ -133,6 +133,8 @@ function handleNotifications(event) {
 }
 
 function nusSendString(s) {
+    // we have no write characteristic enabled for now
+    return;
     if(bleDevice && bleDevice.gatt.connected) {
         console.log("send: " + s);
         let val_arr = new Uint8Array(s.length)
@@ -160,14 +162,11 @@ function sendNextChunk(a) {
 
 function initContent(io) {
     io.println("\r\n\
-Welcome to Web Device CLI V0.1.0 (03/19/2019)\r\n\
-Copyright (C) 2019  makerdiary.\r\n\
+Welcome to VPx BLE logger\r\n\
+Copyright (C) 2024  Nuno Ferreira @ VIZpin.\r\n\
 \r\n\
 This is a Web Command Line Interface via NUS (Nordic UART Service) using Web Bluetooth.\r\n\
-\r\n\
-  * Source: https://github.com/makerdiary/web-device-cli\r\n\
-  * Live:   https://makerdiary.github.io/web-device-cli\r\n\
-");
+\r\n");
 }
 
 function setupHterm() {
@@ -190,9 +189,7 @@ function setupHterm() {
         ['Terminal Reset', () => {term.reset(); initContent(window.term_.io);}],
         ['Terminal Clear', () => {term.clearHome();}],
         [hterm.ContextMenu.SEPARATOR],
-        ['GitHub', function() {
-            lib.f.openWindow('https://github.com/makerdiary/web-device-cli', '_blank');
-        }],
+        ['VIZpin', function() { lib.f.openWindow('https://www.vizpin.com', '_blank'); }],
     ]);
 
     // Useful for console debugging.
