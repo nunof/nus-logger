@@ -186,7 +186,7 @@ function setupHterm() {
     term.installKeyboard();
 
     term.contextMenu.setItems([
-        ['Select ALl', () => {term.selectAll();}],
+        ['Select All', () => {term.selectAll(); term.copySelectionToClipboard();}],
         //['Copy to Clipboard', () => {term.copyStringToClipboard(window.term_.Terminal.);}],
         ['Terminal Reset', () => {term.reset(); initContent(window.term_.io);}],
         ['Terminal Clear', () => {term.clearHome();}],
