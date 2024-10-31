@@ -186,12 +186,11 @@ function setupHterm() {
     term.installKeyboard();
 
     term.contextMenu.setItems([
-        ['Test', () => {
+        ['Copy all to Clipboard', () => {
             var rcount = term.getRowCount();
             var all_text = term.getRowsText(0, rcount - 1);
             term.copyStringToClipboard(all_text);
         }],
-        //['Copy to Clipboard', () => {term.copyStringToClipboard(window.term_.Terminal.);}],
         ['Terminal Reset', () => {term.reset(); initContent(window.term_.io);}],
         ['Terminal Clear', () => {term.clearHome();}],
         [hterm.ContextMenu.SEPARATOR],
